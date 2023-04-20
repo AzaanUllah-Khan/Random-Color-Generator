@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: rgb(253, 253, 256);
+            transition: all 2s ease;
+        }
+
+        nav {
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 176, 201, 0.4);
+        }
+
+        nav h1 {
+            font-size: 17px;
+        }
+
+        .nav-right {
+            display: flex;
+        }
+
+        .nav-left {
+            margin-left: 20px;
+        }
+
+        .nav-right {
+            margin-right: 20px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .btn button {
+            width: 100px;
+            margin-right: 10px;
+            padding: 10px;
+            background-color: transparent;
+            border: 1px solid white;
+            transition: all 1s ease;
+        }
+
+        .btn button:hover {
+            background-color: rgb(153, 217, 234);
+        }
+
+        .btn button:active {
+            transform: scale(0.8);
+        }
+
+        .img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .img img {
+            border-radius: 50%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .main {
+            margin-top: 200px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .color {
+            width: 30%;
+            height: 300px;
+            position: relative;
+            background-color: gray;
+            transition: all 2s ease;
+        }
+
+        .color button {
+            width: 50px;
+            height: 40px;
+            border-radius: 2px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .show {
+            margin-top: 50px;
+            width: 50%;
+            background-color: brown;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .value {
+            width: 75%;
+            background-color: orange;
+            color: whitesmoke;
+            padding: 10px;
+            font-weight: bolder;
+        }
+
+        .show button {
+            width: 20%;
+            background-color: rgb(111, 146, 190);
+            padding: 5px;
+        }
+
+        .restart {
+            margin-top: 50px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: yellow;
+            color: black;
+            transition: all 1s ease;
+        }
+
+        .restart button {
+            background-color: transparent;
+            padding: 10px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .restart:active {
+            transform: translateY(-5px);
+        }
+        @media screen and (max-width: 1100px){
+            .color{
+                width: 40%;
+            }
+        }
+        @media screen and (max-width: 700px){
+            .color{
+                width: 50%;
+            }
+        }
+        @media screen and (max-width: 500px){
+            .color{
+                width: 70%;
+            }
+            .show{
+                width: 75%;
+            }
+        }
+        @media screen and (max-width: 380px){
+            .nav-right{
+               display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1>RGC</h1>
+        </div>
+        <div class="nav-right">
+            <div class="btn">
+                <a href="https://www.linkedin.com/in/azaanullah-khan-2859bb268/"
+                    target="_blank"><button>LinkedIn</button></a>
+                <a href="https://github.com/AzaanUllah-Khan" target="_blank"><button>Github</button></a>
+            </div>
+            <div class="img">
+                <img
+                    src="https://media.licdn.com/dms/image/D4D03AQHyJrtE6WbAfw/profile-displayphoto-shrink_100_100/0/1678030659122?e=1687392000&v=beta&t=7psCzW0ynaHlsxJdlA8kng94hIJU8DrMJo16d5BHEjU">
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="color" id="c">
+            <button onclick="copyInputField()">C</button>
+        </div>
+        <div class="show">
+            <input type="text" readonly class="value" id="val">
+            <button onclick="copyInputField()">C</button>
+        </div>
+        <div class="restart" onclick="reload()">
+            <button>Re-Generate</button>
+        </div>
+    </div>
+    <script>
+        function copyInputField() {
+            var inputField = document.getElementById("val");
+            inputField.select();
+            document.execCommand("copy");
+        }
+        var a = Math.round(Math.random() * 256);
+        var b = Math.round(Math.random() * 256);
+        var c = Math.round(Math.random() * 256);
+        var cc = document.getElementById("c")
+        cc.style.backgroundColor = 'rgb(' + a + ',' + b + ',' + c + ')';
+        function reload() {
+            location.reload()
+        }
+        document.getElementById("val").value = "rgb(" + a + "," + b + "," + c + ")"
+        document.body.style.backgroundColor = 'rgba(' + a + ',' + b + ',' + c + ',' + 0.2 + ')';
+    </script>
+</body>
+
+</html>
